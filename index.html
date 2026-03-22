@@ -1,24 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Riverview Baptist Church</title>
+    <title>Riverview Southern Baptist Church</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: #f5f5f5;
+            line-height: 1.6;
             color: #333;
         }
-        h1 {
-            color: #2c3e50;
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background: #34495e;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem;
+        }
+        nav a:hover {
+            background: #2c3e50;
+            border-radius: 3px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .hero {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+        }
+        .service-time {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .page-placeholder {
+            text-align: center;
+            padding: 3rem;
+            background: #ecf0f1;
+            border-radius: 5px;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
-    <h1>Riverview Southern Baptist Church</h1>
-    <p>Our new website is coming soon!</p>
-    <p>Service times: Sunday 9:30 AM</p>
+    <header>
+        <h1>Riverview Southern Baptist Church</h1>
+        <p>Loving God, Serving Others</p>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="sermons.html">Sermons</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h2>Welcome to Riverview Southern Baptist Church</h2>
+            <p>We're glad you're here! Join us for worship and fellowship.</p>
+            <div class="service-time">
+                📅 Sunday Worship: 9:30 AM
+            </div>
+            <p>📍 [Location coming soon]</p>
+        </div>
+        
+        <div style="text-align: center; padding: 2rem;">
+            <h3>Website Under Construction</h3>
+            <p>We're building our new online home. More content coming soon!</p>
+            <p style="margin-top: 1rem; color: #7f8c8d;">
+                "For where two or three gather in my name, there am I with them."<br>
+                - Matthew 18:20
+            </p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Riverview Southern Baptist Church | Website under construction</p>
+    </footer>
 </body>
 </html>
