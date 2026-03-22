@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Riverview Southern Baptist Church</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        header { background: #2c3e50; color: white; padding: 1rem; text-align: center; }
-        nav { background: #34495e; padding: 0.5rem; text-align: center; }
-        nav a { color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem; }
-        nav a:hover { background: #2c3e50; border-radius: 3px; }
-        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-        .page-placeholder { text-align: center; padding: 3rem; background: #ecf0f1; border-radius: 5px; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
-        .verse { font-style: italic; margin-top: 1rem; color: #7f8c8d; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #1a2a3a; background: #f8f9fa; }
+        header { background: linear-gradient(135deg, #1e3a5f 0%, #0a2a44 100%); color: white; padding: 2rem 1rem; text-align: center; }
+        nav { background: white; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        nav a { color: #1e3a5f; text-decoration: none; margin: 0 1.2rem; padding: 0.5rem 0; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        nav a:hover { color: #3498db; }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #3498db; transition: width 0.3s ease; }
+        nav a:hover::after { width: 100%; }
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; }
+        .page-header { text-align: center; margin-bottom: 2rem; }
+        .page-header h2 { font-size: 2rem; color: #1e3a5f; }
+        .content-card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        footer { background: #1a2a3a; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+        .btn { display: inline-block; background: #3498db; color: white; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; margin-top: 1rem; }
+        @media (max-width: 768px) { nav a { margin: 0 0.6rem; font-size: 0.9rem; } .container { padding: 0 1rem; } }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Riverview Southern Baptist Church</h1>
-        <p>410 Beardsley Ave, Bakersfield, CA 93308</p>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="sermons.html">Sermons</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+    <header><h1>Riverview Southern Baptist Church</h1><p>Loving God, Serving Others</p></header>
+    <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="sermons.html">Sermons</a><a href="events.html">Events</a><a href="contact.html">Contact</a></nav>
     <div class="container">
-        <div class="page-placeholder">
-            <h2>About Riverview Southern Baptist Church</h2>
-            <p>Content coming soon. Check back later!</p>
-            <div class="verse">
-                "Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit."<br>
-                - Matthew 28:19 (NKJV)
-            </div>
+        <div class="page-header"><h2>About Us</h2></div>
+        <div class="content-card">
+            <h3>Our Mission</h3>
+            <p>Riverview Southern Baptist Church exists to glorify God by making disciples of Jesus Christ who love God, love others, and serve the world.</p>
+            <h3 style="margin-top: 1.5rem;">Our Beliefs</h3>
+            <p>We are a Southern Baptist church committed to the authority of Scripture, the centrality of the gospel, and the Great Commission.</p>
+            <h3 style="margin-top: 1.5rem;">Our Pastor</h3>
+            <p>Coming soon — meet our pastor and learn about his heart for ministry.</p>
+            <h3 style="margin-top: 1.5rem;">Our History</h3>
+            <p>Riverview has been serving the Bakersfield community for years, sharing the love of Christ and growing in faith together.</p>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2026 Riverview Southern Baptist Church | Bakersfield, CA</p>
-    </footer>
+    <footer><p>Riverview Southern Baptist Church</p><p>📍 410 Beardsley Ave, Bakersfield, CA 93308</p><p>📞 (661) 333-2250</p><p>&copy; 2026 Riverview Southern Baptist Church</p></footer>
 </body>
 </html>
