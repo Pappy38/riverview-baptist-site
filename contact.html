@@ -12,13 +12,31 @@
         nav a:hover { background: #2c3e50; border-radius: 3px; }
         .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
         .contact-card { background: #ecf0f1; padding: 2rem; border-radius: 5px; margin: 1rem 0; }
-        .map-placeholder { background: #bdc3c7; padding: 2rem; text-align: center; border-radius: 5px; margin-top: 1rem; }
+        .map-container {
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            display: block;
+        }
         footer { background: #2c3e50; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+        .verse { font-style: italic; margin-top: 1rem; color: #7f8c8d; text-align: center; }
+        @media (max-width: 768px) {
+            .map-container iframe {
+                height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Riverview Southern Baptist Church</h1>
+        <p>410 Beardsley Ave, Bakersfield, CA 93308</p>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -38,18 +56,24 @@
             <p>Sunday Worship: 9:30 AM</p>
             
             <h3 style="margin-top: 1rem;">Contact Information</h3>
-            <p>Phone: Coming Soon<br>
-            Email: Coming Soon</p>
+            <p>Phone: Coming Soon<br>Email: Coming Soon</p>
         </div>
         
-        <div class="map-placeholder">
-            <p>📍 Google Maps Link Coming Soon</p>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">410 Beardsley Ave, Bakersfield, CA 93308</p>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12119.806070183364!2d-119.03039612008124!3d35.40809728976285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ea69cebd011bb3%3A0xcdde0de4f8d663bd!2sRiverview%20Southern%20Baptist%20Church!5e1!3m2!1sen!2sus!4v1774147899660!5m2!1sen!2sus" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
         
-        <p style="text-align: center; margin-top: 2rem; color: #7f8c8d;">
+        <div class="verse">
             "Come and see what God is doing at Riverview!"
-        </p>
+        </div>
     </div>
     <footer>
         <p>&copy; 2026 Riverview Southern Baptist Church | Bakersfield, CA</p>
