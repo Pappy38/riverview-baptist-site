@@ -93,6 +93,15 @@
             color: #3498db;
             text-decoration: none;
         }
+        .fun-fact {
+            font-size: 0.85rem;
+            margin-top: 8px;
+            padding: 6px;
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            border-radius: 4px;
+            color: #856404;
+        }
         @media (max-width: 480px) {
             .game-modal {
                 padding: 0.75rem;
@@ -156,27 +165,62 @@
         <p>📍 410 Beardsley Ave, Bakersfield, CA 93308</p>
         <p>📞 (661) 333-2250</p>
         <p>&copy; 2026 Riverview Southern Baptist Church</p>
+        <div style="text-align: center; font-size: 0.75rem; margin-top: 0.5rem;">
+            <a href="games.html" class="games-link" style="color: #7f8c8d; text-decoration: none; transition: all 0.3s ease;">⚡ Bible Games</a>
+        </div>
     </footer>
 
+    <style>
+        .games-link:hover {
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+            transform: scale(1.05);
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+    </style>
+
     <script>
-        // ============ TRIVIA - 10 questions ============
+        // ============ TRIVIA - 10 questions with fun facts ============
         const triviaQuestions = [
-            { text: "Who built the ark?", options: ["Moses", "Noah", "Abraham", "David"], correct: 1 },
-            { text: "What city was Jesus born in?", options: ["Nazareth", "Jerusalem", "Bethlehem", "Capernaum"], correct: 2 },
-            { text: "How many days and nights did it rain during the flood?", options: ["7", "30", "40", "100"], correct: 2 },
-            { text: "Who was thrown into the lions' den?", options: ["Daniel", "David", "Joseph", "Jonah"], correct: 0 },
-            { text: "What is the first book of the Bible?", options: ["Exodus", "Leviticus", "Numbers", "Genesis"], correct: 3 },
-            { text: "Who defeated Goliath with a sling and stone?", options: ["Samson", "David", "Solomon", "Joshua"], correct: 1 },
-            { text: "Who was the first man?", options: ["Adam", "Eve", "Cain", "Abel"], correct: 0 },
-            { text: "How many disciples did Jesus have?", options: ["10", "11", "12", "13"], correct: 2 },
-            { text: "What sea did Moses part?", options: ["Red Sea", "Dead Sea", "Sea of Galilee", "Mediterranean Sea"], correct: 0 },
-            { text: "Who betrayed Jesus?", options: ["Peter", "John", "Judas", "Thomas"], correct: 2 }
+            { text: "Who built the ark?", options: ["Moses", "Noah", "Abraham", "David"], correct: 1, funFact: "Noah was 600 years old when the flood came! (Genesis 7:6)" },
+            { text: "What city was Jesus born in?", options: ["Nazareth", "Jerusalem", "Bethlehem", "Capernaum"], correct: 2, funFact: "Micah 5:2 prophesied Bethlehem as the Messiah's birthplace 700 years before Jesus!" },
+            { text: "How many days and nights did it rain during the flood?", options: ["7", "30", "40", "100"], correct: 2, funFact: "It rained for 40 days and 40 nights, and the waters stayed on the earth for 150 days!" },
+            { text: "Who was thrown into the lions' den?", options: ["Daniel", "David", "Joseph", "Jonah"], correct: 0, funFact: "King Darius was so relieved Daniel survived that he declared everyone should worship Daniel's God!" },
+            { text: "What is the first book of the Bible?", options: ["Exodus", "Leviticus", "Numbers", "Genesis"], correct: 3, funFact: "Genesis means 'beginnings' — it covers creation, the flood, and the patriarchs!" },
+            { text: "Who defeated Goliath with a sling and stone?", options: ["Samson", "David", "Solomon", "Joshua"], correct: 1, funFact: "Goliath was over 9 feet tall! David was just a teenager when he faced him." },
+            { text: "Who was the first man?", options: ["Adam", "Eve", "Cain", "Abel"], correct: 0, funFact: "Adam named all the animals before Eve was even created!" },
+            { text: "How many disciples did Jesus have?", options: ["10", "11", "12", "13"], correct: 2, funFact: "Judas was replaced by Matthias after the resurrection, keeping the number at 12!" },
+            { text: "What sea did Moses part?", options: ["Red Sea", "Dead Sea", "Sea of Galilee", "Mediterranean Sea"], correct: 0, funFact: "The waters parted and the Israelites walked through on dry ground — walls of water on both sides!" },
+            { text: "Who betrayed Jesus?", options: ["Peter", "John", "Judas", "Thomas"], correct: 2, funFact: "Judas betrayed Jesus for 30 pieces of silver — the price of a slave in those days." }
         ];
         
-        // ============ BOOKS OF THE BIBLE ============
+        // ============ BOOKS OF THE BIBLE with flexible matching ============
         const books = ['Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy', 'Joshua', 'Judges', 'Ruth', '1 Samuel', '2 Samuel', '1 Kings', '2 Kings', '1 Chronicles', '2 Chronicles', 'Ezra', 'Nehemiah', 'Esther', 'Job', 'Psalms', 'Proverbs', 'Ecclesiastes', 'Song of Solomon', 'Isaiah', 'Jeremiah', 'Lamentations', 'Ezekiel', 'Daniel', 'Hosea', 'Joel', 'Amos', 'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk', 'Zephaniah', 'Haggai', 'Zechariah', 'Malachi'];
         
-        // ============ VERSE GAME - with Next button ============
+        // Flexible book name matching
+        function normalizeBookName(input) {
+            let name = input.trim().toLowerCase();
+            // Handle numbers: 1st, 2nd, 3rd -> 1, 2, 3
+            name = name.replace(/^(1st|first)\s/i, '1 ');
+            name = name.replace(/^(2nd|second)\s/i, '2 ');
+            name = name.replace(/^(3rd|third)\s/i, '3 ');
+            // Handle "song of solomon" vs "song of songs"
+            if (name === 'song of songs' || name === 'song of solomon') name = 'song of solomon';
+            // Remove punctuation
+            name = name.replace(/[^a-z0-9\s]/g, '');
+            // Remove extra spaces
+            name = name.replace(/\s+/g, ' ').trim();
+            return name;
+        }
+        
+        function isBookMatch(input, correctBook) {
+            const normalizedInput = normalizeBookName(input);
+            const normalizedCorrect = normalizeBookName(correctBook);
+            return normalizedInput === normalizedCorrect;
+        }
+        
+        // ============ VERSE GAME ============
         const verseQuestions = [
             { text: "For God so loved the world that He gave His only _____ Son...", answer: "begotten", hint: "Starts with B", full: "begotten" },
             { text: "I can do all things through _____ who strengthens me.", answer: "christ", hint: "Philippians 4:13", full: "Christ" },
@@ -211,7 +255,7 @@
         }
         overlay.onclick = closeModal;
         
-        // ============ TRIVIA GAME ============
+        // ============ TRIVIA GAME (with fun facts) ============
         function showTriviaGame() {
             let current = 0;
             let score = 0;
@@ -243,6 +287,7 @@
                 html += `<div style="margin: 15px 0; font-size: 18px; font-weight: bold;">${q.text}</div>`;
                 html += `<div id="triviaOptions"></div>`;
                 html += `<div id="triviaFeedback" style="margin: 10px 0; padding: 8px; border-radius: 5px;"></div>`;
+                html += `<div id="triviaFunFact" class="fun-fact" style="display: none;"></div>`;
                 html += `<div style="font-weight: bold;">Score: ${score} / ${triviaQuestions.length}</div>`;
                 html += `<button id="nextBtn" style="margin-top: 10px; padding: 8px 15px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; display: none;">Next Question →</button>`;
                 modal.innerHTML = html;
@@ -256,6 +301,7 @@
                         if (answered) return;
                         answered = true;
                         const feedback = document.getElementById('triviaFeedback');
+                        const funFactDiv = document.getElementById('triviaFunFact');
                         if (idx === q.correct) {
                             score++;
                             feedback.innerHTML = '✅ Correct!';
@@ -266,6 +312,8 @@
                             feedback.style.background = '#f8d7da';
                             feedback.style.color = '#721c24';
                         }
+                        funFactDiv.innerHTML = `📖 Did you know? ${q.funFact}`;
+                        funFactDiv.style.display = 'block';
                         document.querySelectorAll('#triviaOptions button').forEach(b => b.disabled = true);
                         document.getElementById('nextBtn').style.display = 'inline-block';
                     };
@@ -281,7 +329,7 @@
             loadQuestion();
         }
         
-        // ============ BOOKS GAME (with full correct answer hint) ============
+        // ============ BOOKS GAME (with flexible matching) ============
         function showBooksGame() {
             let current = 0;
             let score = 0;
@@ -304,7 +352,7 @@
                     <h3 style="color: #1e3a5f; margin-top: 0;">📚 Books of the Bible</h3>
                     <p>What book comes after:</p>
                     <div style="margin: 20px 0; font-size: 28px; font-weight: bold; text-align: center; color: #1e3a5f;">${books[current]}</div>
-                    <input type="text" id="booksAnswer" placeholder="Enter book name" style="padding: 10px; width: 80%; margin: 10px 0; border: 2px solid #3498db; border-radius: 5px;">
+                    <input type="text" id="booksAnswer" placeholder="Enter book name (ex: '1 Samuel' or 'First Samuel')" style="padding: 10px; width: 80%; margin: 10px 0; border: 2px solid #3498db; border-radius: 5px;">
                     <button id="submitBtn" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
                     <div id="booksFeedback" style="margin-top: 15px; padding: 8px; border-radius: 5px;"></div>
                     <div style="margin-top: 15px; font-weight: bold;">Score: ${score} / ${books.length - 1}</div>
@@ -316,14 +364,13 @@
                 
                 const checkAnswer = () => {
                     if (waitingForNext) return;
-                    const answer = answerInput.value.trim().toLowerCase();
-                    const correct = books[current + 1].toLowerCase();
-                    const correctFull = books[current + 1];
+                    const answer = answerInput.value.trim();
+                    const correctBook = books[current + 1];
                     const feedback = document.getElementById('booksFeedback');
                     
-                    if (answer === correct) {
+                    if (isBookMatch(answer, correctBook)) {
                         score++;
-                        feedback.innerHTML = `✅ Correct! ${books[current]} → ${correctFull}`;
+                        feedback.innerHTML = `✅ Correct! ${books[current]} → ${correctBook}`;
                         feedback.style.background = '#d4edda';
                         feedback.style.color = '#155724';
                         waitingForNext = true;
@@ -341,7 +388,7 @@
                         };
                         feedback.parentNode.appendChild(nextBtn);
                     } else {
-                        feedback.innerHTML = `❌ Try again! The correct book after "${books[current]}" is "${correctFull}" (starts with "${correctFull[0]}")`;
+                        feedback.innerHTML = `❌ Try again! The correct book after "${books[current]}" is "${correctBook}" (you can type it as "${correctBook}" or with numbers like "1 Samuel")`;
                         feedback.style.background = '#f8d7da';
                         feedback.style.color = '#721c24';
                         answerInput.value = '';
@@ -354,7 +401,7 @@
             loadQuestion();
         }
         
-        // ============ VERSE GAME (with Next button, no auto-advance) ============
+        // ============ VERSE GAME ============
         function showVerseGame() {
             let current = 0;
             let score = 0;
