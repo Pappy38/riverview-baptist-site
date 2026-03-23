@@ -294,3 +294,18 @@ footer p {
         height: 300px;
     }
 }
+
+/* Games Link Hover Effect */
+.games-link {
+    color: #7f8c8d;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.games-link:hover {
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    transform: scale(1.05);
+    letter-spacing: 0.5px;
+}
