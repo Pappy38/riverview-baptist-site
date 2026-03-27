@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Riverview Southern Baptist Church</title>
+    <title>Contact & Directions | Riverview Southern Baptist Church</title>
+    <meta name="description" content="Contact Riverview Southern Baptist Church in Bakersfield, CA. Find our location, service times, and get directions.">
+    <meta property="og:title" content="Contact Us | Riverview Southern Baptist Church">
+    <meta property="og:description" content="Get directions and contact information for Riverview Southern Baptist Church in Bakersfield, CA.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <header>
         <h1>Riverview Southern Baptist Church</h1>
         <p>Loving God, Serving Others</p>
@@ -20,7 +25,7 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="container">
+    <div class="container" id="main-content">
         <div class="page-header">
             <h2>Contact Us</h2>
         </div>
@@ -30,10 +35,11 @@
             <h3 style="margin-top: 1rem;">Service Times</h3>
             <p>Sunday Worship: 9:30 AM</p>
             <h3 style="margin-top: 1rem;">Contact</h3>
-            <p>📞 (661) 333-2250<br>✉️ Coming Soon</p>
+            <p>📞 (661) 333-2250</p>
+            <p>✉️ <span id="email"></span></p>
         </div>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12119.806070183364!2d-119.03039612008124!3d35.40809728976285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ea69cebd011bb3%3A0xcdde0de4f8d663bd!2sRiverview%20Southern%20Baptist%20Church!5e1!3m2!1sen!2sus!4v1774147899660!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12119.806070183364!2d-119.03039612008124!3d35.40809728976285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ea69cebd011bb3%3A0xcdde0de4f8d663bd!2sRiverview%20Southern%20Baptist%20Church!5e1!3m2!1sen!2sus!4v1774147899660!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -42,7 +48,14 @@
         <p>📍 410 Beardsley Ave, Bakersfield, CA 93308</p>
         <p>📞 (661) 333-2250</p>
         <p>&copy; 2026 Riverview Southern Baptist Church</p>
-<div style="text-align: center; font-size: 0.75rem; margin-top: 0.5rem;"><a href="games.html" style="color: #7f8c8d; text-decoration: none;"><span class="games-link">⚡ Bible Games</span></a></div>
-</footer>
+        <div><a href="games.html" class="games-link">⚡ Bible Games</a></div>
+    </footer>
+
+    <script>
+        // Email obfuscation to prevent spam scraping
+        let e = "office";
+        let d = "riverviewbakersfield.org";
+        document.getElementById("email").innerHTML = `<a href="mailto:${e}@${d}">${e}@${d}</a>`;
+    </script>
 </body>
 </html>
